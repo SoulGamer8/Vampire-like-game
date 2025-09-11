@@ -1,0 +1,16 @@
+{
+    "name": "Enemy",
+    "rootNamespace": "NeverMindEver.Enemy",
+    "references": [
+        "GUID:4ab4676d8ded5034093864add73efe7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
