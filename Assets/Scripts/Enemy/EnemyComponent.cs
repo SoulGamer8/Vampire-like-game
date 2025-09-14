@@ -7,6 +7,7 @@ namespace NeverMindEver.Enemy {
         private EnemyModel _enemyModel;
         private HealthModel _healthModel;
         private Transform _playerTransform;
+        
         public void Initialize(EnemyModel enemyModel,HealthModel healthModel) {
             _enemyModel = enemyModel;
             _healthModel = healthModel;
