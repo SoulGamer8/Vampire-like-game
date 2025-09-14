@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace NeverMindEver.Enemy {
     public class EnemyComponent : MonoBehaviour, IDamagable {
-        private EnemyModel _enemyModel;
-        private HealthModel _healthModel;
+        public EnemyModel EnemyModel{ get; private set; }
+        public HealthModel HealthModel{ get; private set; }
+        
         private Transform _playerTransform;
         
         public void Initialize(EnemyModel enemyModel,HealthModel healthModel) {
-            _enemyModel = enemyModel;
-            _healthModel = healthModel;
-            _healthModel.OnDeath += Death;
+            enemyModel = enemyModel;
+            healthModel = healthModel;
+            healthModel.OnDeath += Death;
         }
 
         private void Update() {
@@ -19,7 +20,7 @@ namespace NeverMindEver.Enemy {
         }
         
         private void MoveToPlayer() {
-            transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position,_enemyModel.CurrentSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position,EnemyModel.CurrentSpeed * Time.deltaTime);
         }
 
         private void Death() {
@@ -27,7 +28,7 @@ namespace NeverMindEver.Enemy {
         }
         
         public void TakeDamage(int damage) {
-            _healthModel.TakeDamage(damage);
+            HealthModel.TakeDamage(damage);
         }
     }
 }

@@ -5,27 +5,24 @@ using Zenject;
 
 namespace NeverMindEver.Enemy {
     public class EnemyMediator : IInitializable, IDisposable {
-        private readonly EnemyModel _enemy;
-        private readonly HealthModel _health;
+        private readonly EnemyComponent _enemy;
 
-        public EnemyMediator(EnemyModel enemy, HealthModel health)
-        {
+        public EnemyMediator(EnemyComponent enemy) {
             _enemy = enemy;
-            _health = health;
         }
-
-        public void Initialize()
-        {
-            _health.OnDeath += HandleDeath;
+        
+        public void Initialize() {
+            _enemy.HealthModel.OnDeath += HandleDeath;
         }
         
         private void HandleDeath() {
-            //TODO: Spawn coin, return enemy to pool
+            Debug.Log("Death in mediator");
+            Dispose();
         }
-        
-        public void Dispose()
-        {
-            _health.OnDeath -= HandleDeath;
+
+        public void Dispose() {
+            _enemy.HealthModel.OnDeath -= HandleDeath;
         }
+
     }
 }
