@@ -1,9 +1,9 @@
-using Zenject;
-using NeverMindEver.EnemyData;
-using NeverMindEver.Shared;
+using NeverMindEver.Enemy;
+using NeverMindEver.Enemy.Systems;
 using UnityEngine;
+using Zenject;
 
-namespace NeverMindEver.Enemy {
+namespace NeverMindEver.Installer {
     public class GameInstaller : MonoInstaller {
         [SerializeField] private Transform _playerTransform;
     

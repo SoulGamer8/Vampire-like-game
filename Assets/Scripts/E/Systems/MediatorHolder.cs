@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeverMindEver.Enemy
+namespace NeverMindEver.Enemy.Systems
 {
     public class MediatorHolder : MonoBehaviour
     {

@@ -1,9 +1,10 @@
 using System;
+using NeverMindEver.Enemy.Logic;
 using NeverMindEver.Shared;
 using UnityEngine;
 using Zenject;
 
-namespace NeverMindEver.Enemy {
+namespace NeverMindEver.Enemy.Systems {
     public class EnemyMediator : IInitializable, IDisposable {
         private readonly EnemyComponent _enemy;
 

@@ -2,7 +2,7 @@ using System;
 using NeverMindEver.Shared;
 using UnityEngine;
 
-namespace NeverMindEver.Enemy {
+namespace NeverMindEver.Enemy.Logic {
     public class EnemyComponent : MonoBehaviour, IDamagable {
         public EnemyModel EnemyModel{ get; private set; }
         public HealthModel HealthModel{ get; private set; }

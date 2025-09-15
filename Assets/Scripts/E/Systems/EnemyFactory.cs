@@ -1,9 +1,10 @@
-using NeverMindEver.EnemyData;
+using NeverMindEver.Enemy.Data;
+using NeverMindEver.Enemy.Logic;
 using NeverMindEver.Shared;
 using UnityEngine;
 using Zenject;
 
-namespace NeverMindEver.Enemy{
+namespace NeverMindEver.Enemy.Systems{
     public class EnemyFactory : IInitializable {
         private readonly DiContainer _container;
         private readonly Transform _playerTransform;
@@ -21,7 +22,7 @@ namespace NeverMindEver.Enemy{
             // Ініціалізація якщо потрібно
         }
     
-        public EnemyComponent CreateEnemy(Vector3 spawnPosition, EnemyDataBase enemyData,GameObject prefab) {
+        public EnemyComponent CreateEnemy(Vector3 spawnPosition, EnemyBaseData enemyData,GameObject prefab) {
             // Створюємо GameObject
             GameObject enemyPrefab = prefab;
             GameObject enemyObject = Object.Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace NeverMindEver.EnemyData
+namespace NeverMindEver.Enemy.Data
 {
     [CreateAssetMenu(fileName = "Enemy", menuName = "Scriptable Objects/Enemy")]
-    public class EnemyDataBase : ScriptableObject {
+    public class EnemyBaseData : ScriptableObject {
         public int health;
         public int damage;
         public float moveSpeed;

@@ -1,13 +1,12 @@
-using System;
-using NeverMindEver.EnemyData;
+using NeverMindEver.Enemy.Data;
+using NeverMindEver.Enemy.Logic;
 using UnityEngine;
 using Zenject;
 
-namespace NeverMindEver.Enemy
-{
+namespace NeverMindEver.Enemy.Systems {
     public class EnemySpawner : MonoBehaviour{
         [Inject] private EnemyFactory _enemyFactory;
-        [SerializeField] private EnemyDataBase _data;
+        [SerializeField] private EnemyBaseData _data;
 
         [SerializeField] private GameObject _prefab;
 
@@ -16,7 +15,7 @@ namespace NeverMindEver.Enemy
             SpawnEnemy(transform.position,_data,_prefab);
         }
 
-        public void SpawnEnemy(Vector3 position,EnemyDataBase data,GameObject prefab) {
+        public void SpawnEnemy(Vector3 position,EnemyBaseData data,GameObject prefab) {
             EnemyComponent enemy = _enemyFactory.CreateEnemy(position, data,prefab);
         }
     }

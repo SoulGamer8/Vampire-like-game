@@ -1,0 +1,19 @@
+{
+    "name": "Systems",
+    "rootNamespace": "NeverMindEver.Enemy.Systems",
+    "references": [
+        "GUID:5b4aa19dd59f3414b8cc45f517008e81",
+        "GUID:fb89ac47bbc4b634b91d2fec3dfff532",
+        "GUID:4ab4676d8ded5034093864add73efe7c",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

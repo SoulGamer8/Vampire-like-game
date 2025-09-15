@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeverMindEver.Enemy {
+namespace NeverMindEver.Enemy.Logic {
     public class EnemyModel
     {
         public float BaseSpeed;
