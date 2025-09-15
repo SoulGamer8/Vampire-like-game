@@ -9,10 +9,11 @@ namespace NeverMindEver.Enemy {
         
         private Transform _playerTransform;
         
-        public void Initialize(EnemyModel enemyModel,HealthModel healthModel) {
-            enemyModel = enemyModel;
-            healthModel = healthModel;
-            healthModel.OnDeath += Death;
+        public void Initialize(EnemyModel enemyModel,HealthModel healthModel, Transform playerTransform) {
+            EnemyModel = enemyModel;
+            HealthModel = healthModel;
+            _playerTransform = playerTransform;
+            HealthModel.OnDeath += Death;
         }
 
         private void Update() {

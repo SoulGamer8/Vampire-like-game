@@ -16,6 +16,7 @@ namespace NeverMindEver.Enemy {
         }
         
         private void HandleDeath() {
+            //TODO: Retrun to pool, spawn coin
             Debug.Log("Death in mediator");
             Dispose();
         }

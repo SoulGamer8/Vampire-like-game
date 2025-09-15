@@ -4,27 +4,48 @@ using UnityEngine;
 using Zenject;
 
 namespace NeverMindEver.Enemy{
-    public class EnemyFactory{
+    public class EnemyFactory : IInitializable {
         private readonly DiContainer _container;
-        private readonly EnemyComponent _prefab;
-
-        public EnemyFactory(DiContainer container, EnemyComponent prefab) {
+        private readonly Transform _playerTransform;
+        private readonly GameObject _enemyPrefabs;
+    
+        public EnemyFactory(
+            DiContainer container,
+            [Inject(Id = "Player")] Transform playerTransform) {
+        
             _container = container;
-            _prefab = prefab;
+            _playerTransform = playerTransform;
         }
-
-        public EnemyComponent Create(Vector3 pos, EnemyDataBase data) {
-            // беремо з пулу або інстанціюємо
-            var enemy = GameObject.Instantiate(_prefab, pos, Quaternion.identity);
-            var enemyModel = new EnemyModel(data.moveSpeed,data.reward);
-            var health = new HealthModel(data.health);
-            enemy.Initialize(enemyModel, health);
-
-            // створюємо Mediator через Zenject
-            _container.Instantiate<EnemyMediator>(
-                new object[] { enemy });
-
-            return enemy;
+    
+        public void Initialize() {
+            // Ініціалізація якщо потрібно
+        }
+    
+        public EnemyComponent CreateEnemy(Vector3 spawnPosition, EnemyDataBase enemyData,GameObject prefab) {
+            // Створюємо GameObject
+            GameObject enemyPrefab = prefab;
+            GameObject enemyObject = Object.Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        
+            // Отримуємо компонент
+            EnemyComponent enemyComponent = enemyObject.GetComponent<EnemyComponent>();
+        
+            // Створюємо HealthModel
+            HealthModel healthModel = new HealthModel(enemyData.health);
+            EnemyModel enemyModel = new EnemyModel(enemyData.moveSpeed, enemyData.reward);
+            // Ініціалізуємо ворога
+            enemyComponent.Initialize(enemyModel, healthModel, _playerTransform);
+        
+            // Створюємо і налаштовуємо медіатор через DI
+            EnemyMediator mediator = _container.Instantiate<EnemyMediator>(
+                new object[] { enemyComponent }
+            );
+        
+            mediator.Initialize();
+        
+            // Зберігаємо медіатор в компоненті для подальшого використання
+            enemyObject.AddComponent<MediatorHolder>().SetMediator(mediator);
+        
+            return enemyComponent;
         }
 
     }

@@ -6,16 +6,18 @@ using Zenject;
 namespace NeverMindEver.Enemy
 {
     public class EnemySpawner : MonoBehaviour{
-        [Inject] private EnemyFactory _factory;
+        [Inject] private EnemyFactory _enemyFactory;
         [SerializeField] private EnemyDataBase _data;
 
-        private void Start()
-        {
-            SpawnEnemy(transform.position);
+        [SerializeField] private GameObject _prefab;
+
+
+        private void Start() {
+            SpawnEnemy(transform.position,_data,_prefab);
         }
 
-        public void SpawnEnemy(Vector3 pos) {
-            _factory.Create(pos, _data);
+        public void SpawnEnemy(Vector3 position,EnemyDataBase data,GameObject prefab) {
+            EnemyComponent enemy = _enemyFactory.CreateEnemy(position, data,prefab);
         }
     }
 }
