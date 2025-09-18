@@ -2,8 +2,7 @@
     "name": "Player",
     "rootNamespace": "NeverMindEver.Player",
     "references": [
-        "GUID:4ab4676d8ded5034093864add73efe7c",
-        "Shared"
+        "GUID:4ab4676d8ded5034093864add73efe7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
